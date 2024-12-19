@@ -1,11 +1,28 @@
 function findBookIndex(books, searchBook) {
-  // Start coding here
+  let left = 0;
+  let right = books.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (books[mid].title === searchBook) {
+      return mid;
+    } else if (books[mid].title < searchBook) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
 }
 
 /*
   1. ควรใช้ Search Algorithm ใดในการแก้โจทย์นี้ 
+    Binary Search Algorithm.
   2. ให้เหตุผลประกอบว่าทำไมถึงเลือกใช้ Search Algorithm นี้
+    เพราะ Array ที่ input เรียงลำดับแล้ว และวิธีนี้ทำให้เวลาในการประมวลผลลดลง
   3. ให้ระบุว่า Big O Notation ของ Function นี้คือเท่าไร เพราะอะไร
+    O(log n) log 8 ฐาน 2 เพราะ ในการทำงานของลูปแต่ละครั้ง จำนวนสมาชิกจะถูกแบ่งครึ่ง
 */
 
 const books = [
